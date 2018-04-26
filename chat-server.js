@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 
 const socketio = require('socket.io')
 const io = socketio.listen(server)
-io.onconnection('connection', (socket) => {
+io.on('connection', (socket) => {
     console.log('ユーザーが接続', socket.client.id)
     socket.on('chat-msg', (msg) => {
         io.emit('chat-msg', msg)
